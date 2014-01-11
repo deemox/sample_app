@@ -4,7 +4,7 @@ require 'spec_helper'
 feature "Static pages" do
 
  	# Define base_title for all contexts and scenarios to reference (DRY) 
- 	let(:base_title) { "Ruby on Rails Tutorial Sample App |" }
+ 	let(:base_title) { "Ruby on Rails Tutorial Sample App" }
 
 	context "Home page" do
 
@@ -13,9 +13,14 @@ feature "Static pages" do
 	  		expect(page).to have_content('Sample App')
 		end
 
-		scenario "should have the right title 'Home'" do
+		scenario "should have the base title" do
 			visit '/static_pages/home'
-			expect(page).to have_title("#{base_title} Home")
+			expect(page).to have_title("#{base_title}")
+		end
+
+		scenario "should not have a custom page title" do
+			visit '/static_pages/home'
+			expect(page).not_to have_title('Home')
 		end
 	end
 
@@ -26,9 +31,14 @@ feature "Static pages" do
 			expect(page).to have_content('Help')
 		end
 
-		scenario "should have the right title 'Help'" do
+		scenario "should have a base title" do
 			visit '/static_pages/help'
-			expect(page).to have_title("#{base_title} Help")
+			expect(page).to have_title("#{base_title}")
+		end
+
+		scenario "should not have a custom page title" do
+			visit '/static_pages/help'
+			expect(page).not_to have_title('Help')
 		end
 	end
 
@@ -39,9 +49,14 @@ feature "Static pages" do
 			expect(page).to have_content('About Us')
 		end
 
-		scenario "should have the right title 'About Us'" do
+		scenario "should have the base title" do
 			visit '/static_pages/about'
-			expect(page).to have_title("#{base_title} About Us")
+			expect(page).to have_title("#{base_title}")
+		end
+
+		scenario "should not have a custom page title" do
+			visit '/static_pages/about'
+			expect(page).not_to have_title('About Us')
 		end
 	end
 
@@ -52,9 +67,14 @@ feature "Static pages" do
 			expect(page).to have_content('Contact')
 		end
 
-		scenario "should have the right title 'Contact'" do
+		scenario "should have the base title" do
 			visit '/static_pages/contact'
-			expect(page).to have_title("#{base_title} Contact")
+			expect(page).to have_title("#{base_title}")
+		end
+
+		scenario "should not have a custom page title" do
+			visit '/static_pages/contact'
+			expect(page).not_to have_title('Contact')
 		end
 	end
 end
