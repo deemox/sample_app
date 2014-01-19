@@ -3,8 +3,6 @@ require 'spec_helper'
 # A feature cannot be nested, but is synonymous with context and describe, which can be nested
 feature "Static pages" do
 
- 	# Define base_title for all contexts and scenarios to reference (DRY) 
- 	let(:base_title) { "Ruby on Rails Tutorial Sample App" }
  	subject { page }
 
 	context "Home page" do
